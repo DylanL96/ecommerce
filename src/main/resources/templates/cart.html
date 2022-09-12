@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Cart Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+<link rel="stylesheet" type="text/css" media="all" href="/css/styles.css" th:href="@{/css/styles.css}" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+<h1 id="registerTextForBonus" sec:authorize="isAnonymous()"><a href="/register">Register or Login for 10% bonus!</a></h1>
+
+
+<div class="money-display" sec:authorize="isAuthenticated()">
+	<div><span>Total Gross: $</span> <span th:text="${total}"></span> </div>
+
+	<p>Discount: 10%</p>
+	<span class="total">Total: $</span> <span style="font-weight: bold;" th:text="${total * 0.9}"></span>
+</div>
+
+<div class="money-display" sec:authorize="isAnonymous()">
+<div><span class="total">Total: $</span> <span style="font-weight: bold;" th:text="${total}"></span> </div>
+</div>
+
+<div class="money-display"  th:if = "${not #lists.isEmpty(cartList)}">
+	<a th:href="@{/cart/submit}">Click to submit order</a>
+</div>
+
+<div class="money-display"  th:if = "${not #lists.isEmpty(previousCart)}">
+	<a th:href="@{/cart/previousCart}">View previous order</a>
+</div>
+
+    <table id="table" class="table table-striped table-bordered table-hover" th:if="${cartList != null AND cartList  != ''}">
+      <thead>
+      	<th>Product Name</th>
+        <th>Category</th>
+        <th>Price($)</th>
+        <th>Quantity</th>
+        <th>Cost($)</th>
+      </thead>
+
+	 <tr th:each="s : ${cartList}"> 
+	  <td th:text = "${s.groceryName}"> Grocery Name </td>
+	  <td th:text = "${s.groceryCategory}"> Grocery Category </td>
+	  <td th:text = "${s.groceryPrice}"> Grocery Price </td>
+	  <td th:text = "${s.groceryQuantity}"> Grocery Quantity </td>
+	  <td th:text="${s.groceryPrice * s.groceryQuantity}"></td>
+    </tr> 
+    </table>
+    
+
+</body>
+<footer th:insert="fragments/footer.html :: footer"></footer>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Index Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+<link rel="stylesheet" type="text/css" media="all" href="/css/styles.css" th:href="@{/css/styles.css}" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+  <div class="col-xs-2" id="sort">
+    <form method="GET" th:action="@{/Sorted}" th:object="${grocery}" >
+      <input class="form-check-input" type="radio" value="grain" name="sortSelection" th:field="*{sortSelection}">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Sort by Grain
+      </label>
+
+      <input class="form-check-input" type="radio" value="meat" name="sortSelection" th:field="*{sortSelection}">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Sort by Meat
+      </label>
+
+      <input class="form-check-input" type="radio" value="vegetable" name="sortSelection" th:field="*{sortSelection}">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Sort by Vegetable
+      </label>
+
+      <input class="form-check-input" type="radio" value="dairy" name="sortSelection" th:field="*{sortSelection}">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Sort by Dairy
+      </label>
+      
+      <input class="form-check-input" type="radio" value="fruit" name="sortSelection" th:field="*{sortSelection}">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Sort by Fruit
+      </label>
+      <input id="button" class="btn btn-outline-dark" type="submit" value="Sort Data" />
+    </form>
+  </div>
+  <div>
+  </div>
+
+	    <table id="table" class="table table-striped table-bordered table-hover" th:if="${groceryList != null AND groceryList != ''}">
+	      <thead class="thead-dark">
+	      	<tr>
+		      	<th>Product Name</th>
+		        <th>Category</th>
+		        <th>Price($)</th>
+		        <th>Quantity</th>
+		        <th>Add To Cart</th>
+	      	</tr>
+	      	
+	      </thead>
+		 <tr th:each="s : ${groceryList}"> 
+		  <td th:text = "${s.groceryName}"> Grocery Name </td>
+		  <td th:text = "${s.groceryCategory}"> Grocery Name </td>
+		  <td th:text = "${s.groceryPrice}"> Price </td>
+		  <td th:text = "${s.groceryQuantity}"> Grocery Name </td>
+		  <td th:if = "${s.groceryQuantity > 0}">
+ 			<a class="fake-button" th:href="@{/cart/} + ${s.groceryID}"><i class='fas fa-cart-arrow-down' style='font-size:36px'></i></a>
+		  </td>
+		  <td th:if="${s.groceryQuantity == 0}">
+		  	<a id="stock-message">OUT OF STOCK!</a>
+		  </td>
+	     </tr> 
+    </table>
+	</div>
+</body>
+<footer th:insert="fragments/footer.html :: footer"></footer>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

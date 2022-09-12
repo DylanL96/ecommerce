@@ -1,0 +1,35 @@
+<html xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Index Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+<link rel="stylesheet" type="text/css" media="all" href="/css/styles.css" th:href="@{/css/styles.css}" />
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<meta charset="UTF-8">
+<title>Previous Cart Page</title>
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+
+    <table id="table" class="table table-striped table-bordered table-hover" th:if="${previousCartList != null AND previousCartList  != ''}">
+      <thead>
+      	<th>Product Name</th>
+        <th>Category</th>
+        <th>Price($)</th>
+        <th>Quantity</th>
+        <th>Cost($)</th>
+      </thead>
+
+	 <tr th:each="s : ${previousCartList}"> 
+	  <td th:text = "${s.groceryName}"> Grocery Name </td>
+	  <td th:text = "${s.groceryCategory}"> Grocery Category </td>
+	  <td th:text = "${s.groceryPrice}"> Grocery Price </td>
+	  <td th:text = "${s.groceryQuantity}"> Grocery Quantity </td>
+	  <td th:text="${s.groceryPrice * s.groceryQuantity}"></td>
+    </tr> 
+    </table>
+    <a id="previous-order-message" th:href="@{/cart/previousCart/addPreviousCartToCurrent}">Want to add your previous order to your current cart? Click here</a>
+</body>
+</html>

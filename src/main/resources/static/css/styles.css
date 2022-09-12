@@ -1,0 +1,191 @@
+
+#table{
+	text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 5%;
+  background-color: #24252a;
+}
+
+.logo {
+  margin-right: 110%;
+  max-width: 10%;
+  max-height: 10%;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+}
+
+.nav__links a,
+.cta,
+.overlay__content a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.nav__links li {
+  padding: 0px 20px;
+}
+
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+  color: #0088a9;
+}
+
+.cta {
+  margin-left: 20px;
+  margin-bottom: 10px;
+/*   padding: 9px 25px; */
+  background-color: rgba(0, 136, 169, 1);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.cta:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+/* Mobile Nav */
+
+
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .close {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .nav__links,
+  .cta {
+    display: none;
+  }
+  .menu {
+    display: initial;
+  }
+}
+
+#footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	background-color: #24252a;
+	
+}
+
+#registerTextForBonus{
+	text-align: center;
+}
+
+.totalDisplay{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 30%;
+	margin-right: 2%;
+	flex-direction: column;
+}
+
+#stock-message{
+	color: red;
+}
+
+#registerMessage{
+	text-align: center;
+}
+
+#navbarNavAltMarkup{
+	display: flex;
+	justify-content: space-between;
+}
+
+.alert{
+	color: red;
+	position: relative;
+	margin-left: 65%;
+	top: 20%;
+}
+
+#cart-empty-message{
+	text-align: center;
+}
+
+table 
+{
+    table-layout:fixed;
+    width:100%;
+}
+
+.container{
+  position: relative;
+}
+
+.child-container{
+  position: absolute;
+  left: 20%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+}
+
+.child-container a{
+	margin-left: 35%;
+}
+
+#sort{
+  margin-left: 30%;
+}
+
+.money-display{
+	margin-left: 90%;
+	
+}
+
+#previous-order-message{
+	margin-left: 36%;
+	
+}
+
+.logos{
+	position: relative;
+	top: -150px;
+	width: 400px;
+    height: 200px;
+    right: -150px;
+}
+
+
+.total{
+	font-weight: bold;
+}
+
+.submit-order-message{
+	position: relative;
+	top: -100px;
+}

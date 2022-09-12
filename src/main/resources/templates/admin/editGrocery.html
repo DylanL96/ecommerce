@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Grocery</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <link rel="stylesheet" type="text/css" media="all" href="/css/styles.css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+
+<section class="vh-80">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-90">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+           class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form method="POST" th:action="@{/admin/EditGrocery}" th:object="${grocery}">
+         <input type="hidden" name="groceryID" th:field="*{groceryID}" />
+          <!-- Grocery Name Input -->
+          <div class="form-outline mb-4" style="padding-top: 10%;">
+            <input type="text" name="groceryName" class="form-control form-control-lg" th:field="*{groceryName}" placeholder="Enter Grocery Name"/>
+            <label class="form-label" for="name">Grocery Name</label>
+          </div>
+          
+          <!-- Grocery Category Input -->
+          <div class="form-outline mb-4">
+            <input type="text" name="groceryCategory" class="form-control form-control-lg" th:field="*{groceryCategory}" placeholder="Enter Grocery Category"/>
+            <label class="form-label" for="category">Grocery Category</label>
+          </div>
+          
+          
+           <div class="form-outline mb-4">
+            <input type="number" name="groceryPrice" class="form-control form-control-lg" th:field="*{groceryPrice}" placeholder="Enter The Price of Grocery Item">
+           	<label class="form-label" for="price">Grocery Price</label>
+           </div>
+           
+          <div class="form-outline mb-4">
+           <input type="text" name="groceryQuantity" class="form-control form-control-lg" th:field="*{groceryQuantity}" placeholder="Enter Quantity">
+           <label class="form-label" for="quantity">Grocery Quantity</label>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <input type="submit" class="btn btn-primary btn-lg" value="Add new!"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">
+          </div>
+         
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--   <div id="add-page-body" class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Update the table</h3>
+                    <p>Fill in the data below.</p>
+                    <form class="requires-validation" method="POST" th:action="@{/admin/EditGrocery}" th:object="${grocery}">
+                       <input type="hidden" name="groceryID" th:field="*{groceryID}" /> <br>
+                       <div class="col-md-12">
+                           <label for="Grocery-Name">Grocery Name</label>
+                           <input  type="text" class="form-control" name="groceryName" th:field="*{groceryName}" placeholder="Enter Grocery Name">
+                        </div>
+
+                       <div class="col-md-12">
+                        <label for="Played">Grocery Category</label>
+                        <input type="text" class="form-control" name="groceryCategory" th:field="*{groceryCategory}" placeholder="Enter Category">
+                       </div>
+
+                       <div class="col-md-12">
+                        <label for="groceryPrice">Grocery Price</label>
+                        <input type="number" class="form-control" name="groceryPrice" th:field="*{groceryPrice}" placeholder="Enter Price">
+                       </div>
+
+
+                       <div class="col-md-12">
+                        <label for="groceryQuantity">Grocery Quantity</label>
+                        <input type="number" class="form-control" name="groceryQuantity" th:field="*{groceryQuantity}" placeholder="Enter Quantity">
+                       </div> 
+
+                        <div class="form-button mt-3">
+                          <input id="button" type="submit" value="Update Data" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+</body>
+</html>
